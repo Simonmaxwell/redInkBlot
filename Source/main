@@ -1,0 +1,30 @@
+require 'minitest/autorun'
+require 'set'
+require 'socket'
+require 'tempfile'
+require_relative 'acceptance_tests_pennmush'
+
+#Load test files
+  #YAML parser
+    #get format from justin
+#Run test files
+  #mock server and game
+    def setup
+      @pennmush = PennMUSHController.new()
+      @pennmush.install
+      @pennmush.shutdown_and_destroy
+      @pennmush.startup
+  #send test commands to game
+      @pennmush.send(" ")
+    end
+  #Compare against expected output
+    #Recieve output from mock
+      @pennmush.receive
+    #Parse output
+  #Generate and present results
+  #Tear down mock
+    def teardown
+      @pennmush.shutdown_and_destroy
+    end
+
+
